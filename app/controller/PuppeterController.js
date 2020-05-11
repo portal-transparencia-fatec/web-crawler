@@ -34,10 +34,12 @@ class PuppeterController {
 
   
     const url = 'http://www.transparencia.pmmc.com.br/funcionalismopublico/salarios?pagina=remuneracao';
-    const browser = await puppeteer.launch({ 
-        headless: true,
-        defaultViewport: null,
-    })
+    const browser = await puppeteer.launch({
+      headless: true,
+      args: ['--no-sandbox', '--disable-setuid-sandbox'],
+      defaultViewport: null,
+   })
+
     
     const page = await browser.newPage()
     const pendingXHR = new PendingXHR(page);
